@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git)",
+      "Bash(npm install *)",
+      "Bash(npx shadcn@latest init --defaults)",
+      "Bash(npx shadcn@latest add badge card separator)",
+      "Bash(npx tsc *)",
+      "Bash(node -e \"const icons = require\\('lucide-react'\\); const keys = Object.keys\\(icons\\).filter\\(k => /github|linkedin|mail|moon|sun|arrow|map|brief|external|search/i.test\\(k\\)\\); console.log\\(keys.join\\('\\\\n'\\)\\)\")",
+      "Bash(npm run *)",
+      "Bash(npm uninstall *)",
+      "WebFetch(domain:api.anthropic.com)"
+    ]
+  }
+}
