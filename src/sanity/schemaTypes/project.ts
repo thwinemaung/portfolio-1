@@ -6,57 +6,71 @@ const project: SchemaTypeDefinition = {
   type: 'document',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
+      name: 'kind',
+      title: 'Kind',
       type: 'string',
-    },
-    {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
       options: {
-        source: 'title',
-        maxLength: 96,
+        list: ['personal', 'freelance'],
+        layout: 'radio',
       },
     },
     {
-      name: 'description',
+      name: 'name',
+      title: 'Name',
+      type: 'string',
+    },
+    {
+      name: 'desc',
       title: 'Description',
       type: 'text',
     },
     {
-      name: 'techStack',
-      title: 'Tech Stack',
+      name: 'tags',
+      title: 'Tags',
       type: 'array',
       of: [{ type: 'string' }],
     },
     {
-      name: 'url',
-      title: 'URL',
-      type: 'url',
-    },
-    {
-      name: 'github',
-      title: 'GitHub',
-      type: 'url',
-    },
-    {
-      name: 'image',
-      title: 'Image',
-      type: 'image',
+      name: 'type',
+      title: 'Type',
+      type: 'string',
       options: {
-        hotspot: true,
+        list: ['Backend', 'DevOps', 'Full-stack', 'Tooling'],
       },
     },
     {
-      name: 'featured',
-      title: 'Featured',
-      type: 'boolean',
+      name: 'year',
+      title: 'Year',
+      type: 'string',
     },
     {
-      name: 'publishedAt',
-      title: 'Published At',
-      type: 'datetime',
+      name: 'role',
+      title: 'Role',
+      type: 'string',
+    },
+    {
+      name: 'duration',
+      title: 'Duration',
+      type: 'string',
+    },
+    {
+      name: 'client',
+      title: 'Client',
+      type: 'string',
+      description: 'Leave empty for personal projects with no client.',
+    },
+    {
+      // Free text, not type 'url': mock values include bare hosts
+      // ('github.com/alex/queue') and the sentinel 'private'.
+      name: 'url',
+      title: 'URL',
+      type: 'string',
+    },
+    {
+      name: 'outcomes',
+      title: 'Outcomes',
+      type: 'array',
+      of: [{ type: 'string' }],
     },
   ],
 }

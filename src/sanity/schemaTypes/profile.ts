@@ -8,44 +8,6 @@ const profile: SchemaTypeDefinition = {
   type: 'document',
   fields: [
     {
-      name: 'name',
-      title: 'Name',
-      type: 'string',
-    },
-    {
-      name: 'headline',
-      title: 'Headline',
-      type: 'string',
-    },
-    {
-      name: 'bio',
-      title: 'Bio',
-      type: 'text',
-    },
-    {
-      name: 'email',
-      title: 'Email',
-      type: 'string',
-    },
-    {
-      name: 'github',
-      title: 'GitHub',
-      type: 'url',
-    },
-    {
-      name: 'linkedin',
-      title: 'LinkedIn',
-      type: 'url',
-    },
-    {
-      name: 'avatar',
-      title: 'Avatar',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    },
-    {
       name: 'skills',
       title: 'Skills',
       type: 'array',
@@ -56,15 +18,84 @@ const profile: SchemaTypeDefinition = {
           title: 'Skill Group',
           fields: [
             {
-              name: 'category',
+              name: 'cat',
               title: 'Category',
               type: 'string',
             },
             {
-              name: 'items',
-              title: 'Items',
+              name: 'tags',
+              title: 'Tags',
               type: 'array',
               of: [{ type: 'string' }],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'socials',
+      title: 'Socials',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'social',
+          title: 'Social',
+          fields: [
+            {
+              name: 'id',
+              title: 'ID',
+              type: 'string',
+              description: "e.g. 'github', 'linkedin', 'twitter', 'email'.",
+            },
+            {
+              name: 'label',
+              title: 'Label',
+              type: 'string',
+            },
+            {
+              name: 'href',
+              title: 'Href',
+              type: 'string',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'contactLinks',
+      title: 'Contact Links',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'contactLink',
+          title: 'Contact Link',
+          fields: [
+            {
+              name: 'id',
+              title: 'ID',
+              type: 'string',
+            },
+            {
+              name: 'label',
+              title: 'Label',
+              type: 'string',
+            },
+            {
+              name: 'value',
+              title: 'Value',
+              type: 'string',
+            },
+            {
+              name: 'href',
+              title: 'Href',
+              type: 'string',
+            },
+            {
+              name: 'note',
+              title: 'Note',
+              type: 'string',
             },
           ],
         },

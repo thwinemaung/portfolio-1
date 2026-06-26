@@ -6,29 +6,25 @@ const experience: SchemaTypeDefinition = {
   type: 'document',
   fields: [
     {
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    },
+    {
       name: 'company',
       title: 'Company',
       type: 'string',
     },
     {
-      name: 'role',
-      title: 'Role',
+      name: 'location',
+      title: 'Location',
       type: 'string',
     },
     {
-      name: 'startDate',
-      title: 'Start Date',
-      type: 'date',
-    },
-    {
-      name: 'endDate',
-      title: 'End Date',
-      type: 'date',
-    },
-    {
-      name: 'current',
-      title: 'Current',
-      type: 'boolean',
+      name: 'period',
+      title: 'Period',
+      type: 'string',
+      description: "Free text, e.g. '2022 – Present' or 'Summer 2018'.",
     },
     {
       name: 'summary',
@@ -36,10 +32,21 @@ const experience: SchemaTypeDefinition = {
       type: 'text',
     },
     {
-      name: 'tech',
-      title: 'Tech',
+      name: 'bullets',
+      title: 'Bullets',
       type: 'array',
       of: [{ type: 'string' }],
+    },
+    {
+      name: 'stack',
+      title: 'Stack',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
+    {
+      name: 'team',
+      title: 'Team',
+      type: 'string',
     },
   ],
 }
