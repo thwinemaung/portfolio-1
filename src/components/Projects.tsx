@@ -1,8 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useReveal } from '@/hooks/useReveal';
-import { PROJECTS, FILTER_TYPES, type Project } from '@/data';
+import { FILTER_TYPES } from '@/data';
 import { IconX, IconExtLink } from '@/components/Icons';
+import type { SanityProject as Project } from '@/sanity/lib/queries';
 
 function ProjModal({ p, onClose }: { p: Project; onClose: () => void }) {
   useEffect(() => {
@@ -78,12 +79,12 @@ function ProjModal({ p, onClose }: { p: Project; onClose: () => void }) {
   );
 }
 
-export default function Projects() {
+export default function Projects({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState('All');
   const [modal, setModal] = useState<Project | null>(null);
   useReveal();
 
-  const shown = PROJECTS.filter((p) => filter === 'All' || p.type === filter);
+  const shown = projects.filter((p) => filter === 'All' || p.type === filter);
 
   return (
     <>
@@ -103,7 +104,7 @@ export default function Projects() {
             </div>
             <div>
               <div className="rv" style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 10 }}>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--fg-3)' }}>{shown.length} of {PROJECTS.length}</span>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--fg-3)' }}>{shown.length} of {projects.length}</span>
               </div>
               <div className="rv d1">
                 <table className="proj-table">
@@ -117,7 +118,7 @@ export default function Projects() {
                   </thead>
                   <tbody>
                     {shown.map((p, i) => (
-                      <tr key={p.id} className="proj-row" onClick={() => setModal(p)}>
+                      <tr key={p._id} className="proj-row" onClick={() => setModal(p)}>
                         <td><span className="proj-num">{String(i + 1).padStart(2, '0')}</span></td>
                         <td>
                           <div className="proj-name">{p.name}</div>

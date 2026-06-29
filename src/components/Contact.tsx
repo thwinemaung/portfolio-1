@@ -1,9 +1,9 @@
 'use client';
 import { useReveal } from '@/hooks/useReveal';
-import { CONTACT_LINKS } from '@/data';
 import { IconArrowUpRight, socialIcon } from '@/components/Icons';
+import type { ContactLink } from '@/sanity/lib/queries';
 
-export default function Contact() {
+export default function Contact({ contactLinks }: { contactLinks: ContactLink[] }) {
   useReveal();
   return (
     <>
@@ -18,7 +18,7 @@ export default function Contact() {
                 Open to full-time roles, contract work, and interesting technical conversations. Usually respond within 1–2 business days.
               </p>
               <div className="rv d2" style={{ display: 'flex', flexDirection: 'column' }}>
-                {CONTACT_LINKS.map((c) => (
+                {contactLinks.map((c) => (
                   <a key={c.id} href={c.href}
                     style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '14px 12px', marginLeft: -12, marginRight: -12, borderBottom: '1px solid var(--border-s)', textDecoration: 'none', borderRadius: 'var(--r)', transition: 'background var(--t)', cursor: 'pointer' }}
                     onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-card)')}

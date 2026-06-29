@@ -1,8 +1,14 @@
 'use client';
 import { useReveal } from '@/hooks/useReveal';
-import { EDUCATION, CERTS } from '@/data';
+import type { SanityEducation, SanityCertification } from '@/sanity/lib/queries';
 
-export default function Education() {
+export default function Education({
+  education,
+  certifications,
+}: {
+  education: SanityEducation[];
+  certifications: SanityCertification[];
+}) {
   useReveal();
   return (
     <>
@@ -13,7 +19,7 @@ export default function Education() {
             <div><p className="sec-label rv">Education &amp;<br />Certificates</p></div>
             <div>
               <div className="rv d1" style={{ marginBottom: 32 }}>
-                {EDUCATION.map((e, i) => (
+                {education.map((e, i) => (
                   <div key={i} className="xrow">
                     <div className="xrow-head">
                       <span className="xrow-title">{e.degree}</span>
@@ -26,7 +32,7 @@ export default function Education() {
               </div>
               <p className="sec-label rv" style={{ marginBottom: 12 }}>Certifications</p>
               <div className="rv d2">
-                {CERTS.map((c, i) => (
+                {certifications.map((c, i) => (
                   <div key={i} className="cert-row">
                     <span className="cert-badge">{c.badge}</span>
                     <div style={{ flex: 1 }}>

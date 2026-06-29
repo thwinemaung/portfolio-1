@@ -1,8 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useReveal } from '@/hooks/useReveal';
-import { EXPERIENCE, type Experience as Exp } from '@/data';
 import { IconX, IconExtLink } from '@/components/Icons';
+import type { SanityExperience as Exp } from '@/sanity/lib/queries';
 
 function ExpModal({ e, onClose }: { e: Exp; onClose: () => void }) {
   useEffect(() => {
@@ -63,7 +63,7 @@ function ExpModal({ e, onClose }: { e: Exp; onClose: () => void }) {
   );
 }
 
-export default function Experience() {
+export default function Experience({ experience }: { experience: Exp[] }) {
   const [modal, setModal] = useState<Exp | null>(null);
   useReveal();
   return (
@@ -75,11 +75,11 @@ export default function Experience() {
             <div>
               <p className="sec-label rv">Experience</p>
               <p className="rv d1" style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--fg-3)', marginTop: 8, lineHeight: 1.6 }}>
-                {EXPERIENCE.length} roles<br />~7 yrs total
+                {experience.length} roles<br />~7 yrs total
               </p>
             </div>
             <div className="rv d1">
-              {EXPERIENCE.map((e, i) => (
+              {experience.map((e, i) => (
                 <div key={i} className="exp-row" onClick={() => setModal(e)} style={{ cursor: 'pointer' }}>
                   <div className="exp-head">
                     <div className="exp-title-wrap">

@@ -1,7 +1,7 @@
 'use client';
 import { useReveal } from '@/hooks/useReveal';
-import { SOCIALS } from '@/data';
 import { socialIcon, IconDownload } from '@/components/Icons';
+import type { SocialLink } from '@/sanity/lib/queries';
 
 const STATS = [
   { n: '2,847', label: 'cups of coffee',         foot: 'give or take' },
@@ -10,7 +10,7 @@ const STATS = [
   { n: '6',     label: 'rubber ducks on staff',  foot: 'senior' },
 ];
 
-export default function Hero() {
+export default function Hero({ socials }: { socials: SocialLink[] }) {
   useReveal();
   return (
     <section id="hero" className="hero-bg">
@@ -27,7 +27,7 @@ export default function Hero() {
 
         {/* Social links + résumé */}
         <div className="rv d4" style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-          {SOCIALS.map((s) => (
+          {socials.map((s) => (
             <a
               key={s.id} href={s.href} title={s.label} aria-label={s.label}
               style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 38, height: 38, borderRadius: 'var(--r)', color: 'var(--fg-3)', background: 'var(--bg-raised)', border: '1px solid var(--border)', textDecoration: 'none', transition: 'color var(--t), border-color var(--t), transform var(--t)' }}
