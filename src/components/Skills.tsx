@@ -1,8 +1,8 @@
 'use client';
 import { useReveal } from '@/hooks/useReveal';
-import type { SkillGroup } from '@/sanity/lib/queries';
+import type { SkillGroup, Language } from '@/sanity/lib/queries';
 
-export default function Skills({ skills }: { skills: SkillGroup[] }) {
+export default function Skills({ skills, languages }: { skills: SkillGroup[]; languages: Language[] }) {
   useReveal();
   return (
     <>
@@ -20,6 +20,16 @@ export default function Skills({ skills }: { skills: SkillGroup[] }) {
                   </div>
                 </div>
               ))}
+              {languages.length > 0 && (
+                <div className="skill-section">
+                  <p className="skill-cat">Languages</p>
+                  <div className="skill-tags">
+                    {languages.map((l) => (
+                      <span key={l.name} className="tag">{l.name} — {l.level}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

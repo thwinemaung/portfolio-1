@@ -8,6 +8,52 @@ const profile: SchemaTypeDefinition = {
   type: 'document',
   fields: [
     {
+      name: 'name',
+      title: 'Name',
+      type: 'string',
+    },
+    {
+      name: 'headline',
+      title: 'Headline',
+      type: 'string',
+      description: "e.g. 'Software Engineer'.",
+    },
+    {
+      name: 'bio',
+      title: 'Bio',
+      type: 'text',
+    },
+    {
+      name: 'phone',
+      title: 'Phone',
+      type: 'string',
+    },
+    {
+      name: 'languages',
+      title: 'Languages',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'language',
+          title: 'Language',
+          fields: [
+            {
+              name: 'name',
+              title: 'Name',
+              type: 'string',
+            },
+            {
+              name: 'level',
+              title: 'Level',
+              type: 'string',
+              description: "e.g. 'Native', 'Full Professional'.",
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: 'skills',
       title: 'Skills',
       type: 'array',

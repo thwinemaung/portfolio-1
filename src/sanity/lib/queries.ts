@@ -31,6 +31,7 @@ export interface SanityEducation {
   school: string
   year: string
   desc: string
+  highlights: string[] | null
 }
 
 export interface SanityCertification {
@@ -60,8 +61,18 @@ export interface ContactLink {
   note: string
 }
 
+export interface Language {
+  name: string
+  level: string
+}
+
 export interface SanityProfile {
   _id: string
+  name: string
+  headline: string
+  bio: string
+  phone: string | null
+  languages: Language[]
   skills: SkillGroup[]
   socials: SocialLink[]
   contactLinks: ContactLink[]
@@ -76,7 +87,7 @@ export const EXPERIENCE_QUERY = `*[_type == "experience"] | order(_id asc) {
 }`
 
 export const EDUCATION_QUERY = `*[_type == "education"] | order(_id asc) {
-  _id, degree, school, year, desc
+  _id, degree, school, year, desc, highlights
 }`
 
 export const CERTIFICATIONS_QUERY = `*[_type == "certification"] | order(_id asc) {
@@ -84,5 +95,5 @@ export const CERTIFICATIONS_QUERY = `*[_type == "certification"] | order(_id asc
 }`
 
 export const PROFILE_QUERY = `*[_type == "profile"][0] {
-  _id, skills, socials, contactLinks
+  _id, name, headline, bio, phone, languages, skills, socials, contactLinks
 }`

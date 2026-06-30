@@ -26,7 +26,13 @@ export default function Education({
                       <span className="xrow-period">{e.year}</span>
                     </div>
                     <div className="xrow-sub">{e.school}</div>
-                    <div className="xrow-desc">{e.desc}</div>
+                    {e.highlights && e.highlights.length > 0 ? (
+                      e.highlights.map((h, hi) => (
+                        <div key={hi} className="xrow-desc">{h}</div>
+                      ))
+                    ) : (
+                      <div className="xrow-desc">{e.desc}</div>
+                    )}
                   </div>
                 ))}
               </div>

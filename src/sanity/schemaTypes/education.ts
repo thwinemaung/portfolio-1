@@ -25,6 +25,13 @@ const education: SchemaTypeDefinition = {
       title: 'Description',
       type: 'text',
     },
+    {
+      name: 'highlights',
+      title: 'Highlights',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: "Bullet points, e.g. CGPA, capstone project, coursework.",
+    },
   ],
 }
 

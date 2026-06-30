@@ -33,12 +33,18 @@ export default async function Home() {
   return (
     <>
       <Nav />
-      <Hero socials={profile?.socials ?? []} />
+      <Hero
+        name={profile?.name ?? ''}
+        headline={profile?.headline ?? ''}
+        bio={profile?.bio ?? ''}
+        socials={profile?.socials ?? []}
+        phone={profile?.phone}
+      />
       <About />
       <Projects projects={projects} />
       <Experience experience={experience} />
       <Education education={education} certifications={certifications} />
-      <Skills skills={profile?.skills ?? []} />
+      <Skills skills={profile?.skills ?? []} languages={profile?.languages ?? []} />
       <Contact contactLinks={profile?.contactLinks ?? []} />
       <Footer />
     </>
